@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { FaStar } from 'react-icons/fa'
 import { POSTER_SMALL } from '../services/tmdb'
 
-export default function MovieCard({ movie }) {
+const MovieCard = ({ movie }) => {
   return (
     <Link to={`/titulo/${movie.id}`} className="movie-card">
       <div className="movie-card__poster">
@@ -19,3 +19,5 @@ export default function MovieCard({ movie }) {
     </Link>
   )
 }
+
+export default MovieCard

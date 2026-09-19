@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { FiFilm } from 'react-icons/fi'
 
-export default function Header() {
+const Header = () => {
   return (
     <header className="header">
       <Link to="/" className="header__brand">
@@ -11,3 +11,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default Header

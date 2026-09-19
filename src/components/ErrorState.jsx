@@ -1,6 +1,6 @@
 import { FiAlertTriangle } from 'react-icons/fi'
 
-export default function ErrorState({ message = 'Algo deu errado.', onRetry }) {
+const ErrorState = ({ message = 'Algo deu errado.', onRetry }) => {
   return (
     <div className="state-message state-message--error">
       <FiAlertTriangle />
@@ -13,3 +13,5 @@ export default function ErrorState({ message = 'Algo deu errado.', onRetry }) {
     </div>
   )
 }
+
+export default ErrorState

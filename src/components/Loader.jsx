@@ -1,6 +1,6 @@
 import { FiLoader } from 'react-icons/fi'
 
-export default function Loader({ label = 'Carregando...' }) {
+const Loader = ({ label = 'Carregando...' }) => {
   return (
     <div className="state-message" role="status">
       <FiLoader className="spin" />
@@ -8,3 +8,5 @@ export default function Loader({ label = 'Carregando...' }) {
     </div>
   )
 }
+
+export default Loader

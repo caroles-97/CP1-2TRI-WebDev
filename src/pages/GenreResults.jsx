@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react'
-import { useParams, useLocation, Link } from 'react-router-dom'
+import { useParams, useLocation, Link } from 'react-router'
 import { FiArrowLeft } from 'react-icons/fi'
-import MovieCard from '../components/MovieCard.jsx'
-import Loader from '../components/Loader.jsx'
-import EmptyState from '../components/EmptyState.jsx'
-import ErrorState from '../components/ErrorState.jsx'
+import MovieCard from '../components/MovieCard'
+import Loader from '../components/Loader'
+import EmptyState from '../components/EmptyState'
+import ErrorState from '../components/ErrorState'
 import { getMoviesByGenre } from '../services/tmdb'
 
-export default function GenreResults() {
+const GenreResults = () => {
   const { id } = useParams()
   const location = useLocation()
   const [movies, setMovies] = useState([])
   const [status, setStatus] = useState('loading')
 
-  function loadMovies() {
+  const loadMovies = () => {
     setStatus('loading')
     getMoviesByGenre(id)
       .then((data) => {
@@ -54,3 +54,5 @@ export default function GenreResults() {
     </section>
   )
 }
+
+export default GenreResults

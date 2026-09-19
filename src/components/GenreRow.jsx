@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { FiChevronRight } from 'react-icons/fi'
-import MovieCard from './MovieCard.jsx'
+import MovieCard from './MovieCard'
 
-export default function GenreRow({ genre, movies }) {
+const GenreRow = ({ genre, movies }) => {
   if (!movies.length) return null
 
   return (
@@ -27,3 +27,5 @@ export default function GenreRow({ genre, movies }) {
     </section>
   )
 }
+
+export default GenreRow

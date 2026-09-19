@@ -1,6 +1,6 @@
 import { FiInbox } from 'react-icons/fi'
 
-export default function EmptyState({ message = 'Nada encontrado por aqui.' }) {
+const EmptyState = ({ message = 'Nada encontrado por aqui.' }) => {
   return (
     <div className="state-message">
       <FiInbox />
@@ -8,3 +8,5 @@ export default function EmptyState({ message = 'Nada encontrado por aqui.' }) {
     </div>
   )
 }
+
+export default EmptyState

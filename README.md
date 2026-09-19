@@ -18,16 +18,17 @@ Documentação completa de requisitos, arquitetura e referências de design em [
 
 ## Funcionalidades
 
-- **Navegação por gêneros** (`/`): grade de cards coloridos com todos os gêneros de filme do TMDB.
-- **Resultados por gênero** (`/genero/:id`): grade de filmes do gênero escolhido, com pôster, título e nota.
+- **Home** (`/`): fileiras horizontais de filmes por gênero (estilo Netflix/HBO Max/Disney+ — ver `docs/references`), com scroll lateral e link "Ver tudo" por fileira.
+- **Resultados por gênero** (`/genero/:id`): grade completa de filmes do gênero escolhido, com pôster, título e nota.
 - **Detalhe do título** (`/titulo/:id`): sinopse, nota, data de lançamento, gêneros e elenco principal.
 - Estados de carregamento, vazio e erro (com nova tentativa) em todas as páginas que consomem a API.
 
 ## Tecnologias
 
-- [React](https://react.dev/) + [Vite](https://vitejs.dev/)
-- [React Router](https://reactrouter.com/) (rotas, layout compartilhado e rotas dinâmicas)
+- [React 19](https://react.dev/) + [Vite 8](https://vitejs.dev/)
+- [React Router 8](https://reactrouter.com/) (`createBrowserRouter` + `RouterProvider`, layout compartilhado e rotas dinâmicas) — mesmo padrão usado em aula
 - [react-icons](https://react-icons.github.io/react-icons/) (biblioteca de ícones)
+- ESLint (`eslint.config.js`, mesma configuração usada em aula)
 - CSS puro (`src/index.css`)
 
 ## API usada
@@ -41,7 +42,7 @@ O desenvolvimento seguiu a metodologia de Spec Driven Development com apoio de I
 ## Como executar o projeto
 
 ### Pré-requisitos
-- [Node.js](https://nodejs.org/) 18+ instalado
+- [Node.js](https://nodejs.org/) 20.19+ ou 22.12+ instalado (exigido pelo Vite 8 — rode `node -v` para conferir; se for menor, atualize o Node antes do `npm install`)
 
 ### Passos
 

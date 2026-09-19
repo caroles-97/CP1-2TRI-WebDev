@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router'
 import { FiArrowLeft } from 'react-icons/fi'
 import { FaStar } from 'react-icons/fa'
-import Loader from '../components/Loader.jsx'
-import ErrorState from '../components/ErrorState.jsx'
+import Loader from '../components/Loader'
+import ErrorState from '../components/ErrorState'
 import { getMovieDetails, getMovieCredits, POSTER_LARGE } from '../services/tmdb'
 
-export default function TitleDetail() {
+const TitleDetail = () => {
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
   const [cast, setCast] = useState([])
   const [status, setStatus] = useState('loading')
 
-  function loadMovie() {
+  const loadMovie = () => {
     setStatus('loading')
     Promise.all([getMovieDetails(id), getMovieCredits(id)])
       .then(([movieData, creditsData]) => {
@@ -77,3 +77,5 @@ export default function TitleDetail() {
     </section>
   )
 }
+
+export default TitleDetail
