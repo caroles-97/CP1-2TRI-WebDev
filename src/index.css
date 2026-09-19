@@ -69,29 +69,48 @@ h2 {
   color: var(--accent-2);
 }
 
-/* Genre grid (Home) */
-.genre-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
-}
-
-.genre-card {
+/* Genre rows (Home) — inspired by Netflix/HBO Max horizontal carousels */
+.genre-row-list {
   display: flex;
-  align-items: flex-end;
-  min-height: 110px;
-  padding: 1rem;
-  border-radius: var(--radius);
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.genre-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.genre-row__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.genre-row__header h2 {
+  font-size: 1.15rem;
+}
+
+.genre-row__see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.genre-row__see-all:hover {
+  color: var(--accent-2);
+}
+
+.genre-row__track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+}
+
+.genre-row__item {
+  flex: 0 0 150px;
 }
 
 /* Movie grid (GenreResults) */

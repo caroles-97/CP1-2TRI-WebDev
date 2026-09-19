@@ -1,42 +1,57 @@
 import { useEffect, useState } from 'react'
-import GenreCard from '../components/GenreCard.jsx'
+import GenreRow from '../components/GenreRow.jsx'
 import Loader from '../components/Loader.jsx'
-import EmptyState from '../components/EmptyState.jsx'
 import ErrorState from '../components/ErrorState.jsx'
-import { getGenres } from '../services/tmdb'
+import { getGenres, getMoviesByGenre } from '../services/tmdb'
+
+// Gêneros em destaque na Home, na ordem em que as fileiras aparecem.
+const HOME_GENRE_IDS = [28, 35, 27, 10749, 16, 878, 18, 12]
 
 export default function Home() {
-  const [genres, setGenres] = useState([])
+  const [genreRows, setGenreRows] = useState([])
   const [status, setStatus] = useState('loading')
 
-  function loadGenres() {
+  function loadHome() {
     setStatus('loading')
     getGenres()
-      .then((data) => {
-        setGenres(data)
-        setStatus(data.length ? 'success' : 'empty')
+      .then((genres) => {
+        const homeGenres = HOME_GENRE_IDS.map((id) =>
+          genres.find((genre) => genre.id === id),
+        ).filter(Boolean)
+
+        return Promise.all(
+          homeGenres.map((genre) =>
+            getMoviesByGenre(genre.id).then((movies) => ({
+              genre,
+              movies: movies.slice(0, 12),
+            })),
+          ),
+        )
+      })
+      .then((rows) => {
+        setGenreRows(rows)
+        setStatus(rows.some((row) => row.movies.length) ? 'success' : 'empty')
       })
       .catch(() => setStatus('error'))
   }
 
   useEffect(() => {
-    loadGenres()
+    loadHome()
   }, [])
 
   return (
     <section>
       <h1>O que você quer assistir hoje?</h1>
-      <p className="page-subtitle">Escolha um gênero e explore filmes desse universo.</p>
+      <p className="page-subtitle">Navegue pelos gêneros e descubra filmes para maratonar.</p>
 
-      {status === 'loading' && <Loader label="Buscando gêneros..." />}
+      {status === 'loading' && <Loader label="Buscando filmes..." />}
       {status === 'error' && (
-        <ErrorState message="Não foi possível carregar os gêneros." onRetry={loadGenres} />
+        <ErrorState message="Não foi possível carregar a Home." onRetry={loadHome} />
       )}
-      {status === 'empty' && <EmptyState message="Nenhum gênero encontrado." />}
       {status === 'success' && (
-        <div className="genre-grid">
-          {genres.map((genre) => (
-            <GenreCard key={genre.id} genre={genre} />
+        <div className="genre-row-list">
+          {genreRows.map(({ genre, movies }) => (
+            <GenreRow key={genre.id} genre={genre} movies={movies} />
           ))}
         </div>
       )}

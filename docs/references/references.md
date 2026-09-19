@@ -4,58 +4,56 @@
 
 As referências abaixo orientam as decisões de experiência e interface do Surf Time, com foco na necessidade escolhida: **descoberta de filmes por gênero**.
 
-> **Nota:** as imagens desta pasta (`referencia-01.png`, `referencia-02.png`, `referencia-03.png`) precisam ser capturadas manualmente pelo grupo (este ambiente de desenvolvimento não tem acesso à internet para gerar os prints) e salvas em `docs/references/imagens/` com esses nomes antes da entrega.
-
-## 2. Referência 01 — Spotify (Browse: Genres & Moods)
+## 2. Referência 01 — HBO Max (Home com fileiras por categoria)
 
 ### Fonte
-https://open.spotify.com/genre
+HBO Max — tela inicial (print do grupo)
 
 ### Imagem
 
-![Referência 01](./imagens/referencia-01.png)
+![Referência 01](./imagens/referencia-01.webp)
 
 ### O que observamos?
-A tela "Browse" do Spotify organiza toda a exploração de conteúdo em uma grade de cards retangulares e coloridos, um por gênero/humor (ex: Pop, Rock, Chill), sem nenhuma lista de texto — a cor e o nome curto do card já comunicam a categoria antes mesmo do clique.
+A Home do HBO Max organiza o catálogo em fileiras horizontais de pôsteres, cada uma com um título de seção (ex: "Recomendados para você"). A barra superior fica fixa, com logo à esquerda e ícones de busca/perfil à direita, sobre um fundo escuro que faz os pôsteres coloridos se destacarem.
 
 ### O que vamos aproveitar?
-A ideia de transformar a "lista de gêneros" — que poderia ser um `<select>` ou uma lista simples — em uma grade de cards grandes, coloridos e clicáveis, tornando a escolha do gênero um momento visual e não burocrático.
+A estrutura de fileiras horizontais roláveis como o principal padrão de navegação da Home — em vez de uma lista/grade única, o usuário vê vários gêneros ao mesmo tempo, cada um com sua própria fileira de pôsteres.
 
 ### Como será adaptado?
-Na Home do Surf Time, cada gênero retornado pela API do TMDB vira um `GenreCard` com uma cor de fundo própria (gerada a partir do id do gênero, já que o TMDB não fornece cor) e o nome do gênero centralizado — replicando a sensação de "vitrine" do Spotify, mas em grade responsiva simples de CSS Grid.
+A Home do Surf Time passa a exibir uma fileira por gênero em destaque (ex: Ação, Comédia, Terror, Romance), cada uma buscada na API do TMDB (`discover/movie` filtrado por `with_genres`). O tema escuro e a barra superior fixa do `Header` seguem a mesma lógica visual (fundo escuro, marca à esquerda).
 
-## 3. Referência 02 — Letterboxd (página de detalhe do filme)
+## 3. Referência 02 — Netflix (fileiras nomeadas por gênero/humor)
 
 ### Fonte
-https://letterboxd.com/film/
+Netflix — tela inicial (print do grupo)
 
 ### Imagem
 
-![Referência 02](./imagens/referencia-02.png)
+![Referência 02](./imagens/referencia-02.webp)
 
 ### O que observamos?
-A página de filme do Letterboxd organiza a informação em hierarquia clara: pôster grande à esquerda/topo, título e ano em destaque, sinopse logo abaixo, e nota média bem visível próxima ao título — sem excesso de elementos concorrendo por atenção.
+A Netflix nomeia cada fileira de forma bem específica por gênero ou humor ("Chega de tédio", "Anime", "Maratone em dias de preguiça"), o que ajuda o usuário a entender rapidamente o que vai encontrar em cada fileira sem precisar clicar em nada.
 
 ### O que vamos aproveitar?
-A hierarquia visual (pôster → título/ano → nota → sinopse → elenco) como estrutura da nossa página de detalhe, garantindo que a informação mais importante para decidir "vou assistir ou não" apareça primeiro, sem precisar rolar a página.
+A ideia de que o título da fileira comunica sozinho o "porquê" daquele agrupamento de filmes, e que cada fileira tem uma ação clara de "ver mais" daquele assunto específico.
 
 ### Como será adaptado?
-A `TitleDetail` do Surf Time replica essa ordem com dados do TMDB: pôster (`poster_path`), título + `release_date`, nota (`vote_average`) em um badge, sinopse (`overview`) e, abaixo, uma lista horizontal com o elenco principal vindo do endpoint de créditos.
+No Surf Time, o título de cada `GenreRow` é o próprio nome do gênero vindo do TMDB (ex: "Comédia", "Terror"), com um link "Ver tudo" ao lado que leva para `/genero/:id` — a página com a grade completa daquele gênero, reaproveitando a mesma ideia de "expandir uma fileira em uma página dedicada".
 
-## 4. Referência 03 — JustWatch (filtro de gênero + grade de pôsteres)
+## 4. Referência 03 — *(pendente)*
 
 ### Fonte
-https://www.justwatch.com/br/filmes
+*A definir — aguardando print de um 3º produto enviado pelo grupo.*
 
 ### Imagem
 
 ![Referência 03](./imagens/referencia-03.png)
 
 ### O que observamos?
-O JustWatch exibe resultados de busca/filtro como uma grade responsiva de pôsteres com a nota sobreposta no canto do próprio pôster, permitindo escanear muitos títulos rapidamente sem precisar abrir cada um.
+*A preencher.*
 
 ### O que vamos aproveitar?
-O padrão de grade de pôsteres com nota sobreposta para a página de resultados por gênero, priorizando densidade e escaneabilidade em vez de cards grandes com muito texto.
+*A preencher.*
 
 ### Como será adaptado?
-O `MovieCard` do Surf Time (usado em `GenreResults`) mostra o pôster do TMDB (`poster_path`) ocupando todo o card, com um badge de nota (`vote_average`) sobreposto no canto superior e o título abaixo — em uma grade que se reorganiza conforme a largura da tela (responsivo).
+*A preencher.*

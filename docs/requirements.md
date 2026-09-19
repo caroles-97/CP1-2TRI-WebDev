@@ -22,12 +22,13 @@ Ao final do projeto, o usuário deve conseguir: abrir o site, visualizar a lista
 
 ### F01 — Navegação por gêneros (Home)
 
-**Descrição:** A Home exibe uma grade de cards coloridos, um para cada gênero de filme disponível no TMDB. Ao clicar em um card, o usuário é levado para a página de resultados daquele gênero.
+**Descrição:** A Home exibe, no estilo Netflix/HBO Max, fileiras horizontais de filmes — uma fileira por gênero em destaque. Cada fileira permite rolar lateralmente pelos pôsteres e tem um link "Ver tudo" que leva à listagem completa daquele gênero.
 
 **Critérios de aceitação:**
-- [ ] Ao abrir `/`, a lista de gêneros é buscada na API do TMDB automaticamente
-- [ ] Cada gênero aparece como um card clicável com o nome do gênero
-- [ ] Clicar em um card navega para `/genero/:id`, levando também o nome do gênero
+- [ ] Ao abrir `/`, a Home busca os gêneros e, para cada gênero em destaque, os filmes correspondentes na API do TMDB
+- [ ] Cada gênero aparece como uma fileira com título e pôsteres roláveis horizontalmente
+- [ ] Cada fileira tem um link "Ver tudo" que navega para `/genero/:id`, levando também o nome do gênero
+- [ ] Clicar em um pôster navega direto para `/titulo/:id` daquele filme
 
 **Estados:**
 - [ ] Inicial
