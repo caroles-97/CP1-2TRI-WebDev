@@ -84,7 +84,10 @@ h2 {
 }
 
 .genre-row__header h2 {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
 }
 
 .genre-row__see-all {
@@ -130,6 +133,8 @@ h2 {
   overflow: hidden;
   background: var(--bg-elevated);
   aspect-ratio: 2 / 3;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 .movie-card__poster img {

@@ -40,20 +40,20 @@ A ideia de que o título da fileira comunica sozinho o "porquê" daquele agrupam
 ### Como será adaptado?
 No Surf Time, o título de cada `GenreRow` é o próprio nome do gênero vindo do TMDB (ex: "Comédia", "Terror"), com um link "Ver tudo" ao lado que leva para `/genero/:id` — a página com a grade completa daquele gênero, reaproveitando a mesma ideia de "expandir uma fileira em uma página dedicada".
 
-## 4. Referência 03 — *(pendente)*
+## 4. Referência 03 — Disney+ (fileira temática "Aventuras Épicas")
 
 ### Fonte
-*A definir — aguardando print de um 3º produto enviado pelo grupo.*
+Disney+ — tela inicial (print do grupo)
 
 ### Imagem
 
-![Referência 03](./imagens/referencia-03.png)
+![Referência 03](./imagens/referencia-03.webp)
 
 ### O que observamos?
-*A preencher.*
+O Disney+ também usa fileiras horizontais, mas com um acabamento mais refinado: os pôsteres têm cantos arredondados e uma leve borda/sombra que os destaca do fundo escuro (em vez de ficarem "colados" um no outro), e o título da fileira ("Aventuras Épicas") aparece em texto fino e discreto, sem competir visualmente com os pôsteres.
 
 ### O que vamos aproveitar?
-*A preencher.*
+O acabamento mais "premium" dos cards (cantos arredondados + sombra sutil) e a hierarquia onde o título da fileira é discreto — o pôster é sempre o protagonista visual.
 
 ### Como será adaptado?
-*A preencher.*
+No `MovieCard`, foi adicionada uma borda sutil e uma sombra ao redor do pôster para destacá-lo do fundo escuro, e o título de cada `GenreRow` (`<h2>`) usa peso de fonte mais leve, mantendo o nome do gênero legível sem disputar atenção com os pôsteres.
